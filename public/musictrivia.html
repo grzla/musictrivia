@@ -27,7 +27,7 @@
                     let songInfo = document.createElement('div');
                     songInfo.className = 'song-info';
                     let textElement = document.createElement('p');
-                    textElement.textContent = `${song.Artist} - ${song.Title}`;
+                    textElement.textContent = `${song.Artist} - ${song.Title} (${song.Ranking})`;
                     songInfo.appendChild(textElement);
                     songElement.appendChild(songInfo);
 

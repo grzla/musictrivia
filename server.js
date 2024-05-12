@@ -4,11 +4,11 @@ const port = 3000;
 // Serve static files from the "public" directory
 app.use(express.static('public'));
 app.use(express.json());
-const { get_songs, create_round, never_play } = require('./recommender');
+const { getSong, createRound, neverPlay, markPlayed } = require('./recommender');
 
 app.get('/round', async (req, res) => {
     try {
-        let data = await create_round();
+        let data = await createRound();
         res.json(data);
     } catch (err) {
         console.error(err);
@@ -35,7 +35,7 @@ app.post('/neverplay', async (req, res) => {
         // console.log(`req.body: ${req.body}`)
         let year = req.body.year;
         let songId = req.body.id;
-        never_play(year, songId);
+        neverPlay(year, songId);
         console.log('hello from neverplay')
         console.log(`${req.body.year}.tsv ${req.body.id} should be -1`)
         // console.log(`req.body: ${req.body.year} ${req.body.song[""]}`)
@@ -49,7 +49,7 @@ app.post('/neverplay', async (req, res) => {
         let newSong /* = code to select a new song */
 
         // res.json({ message: 'Song updated successfully', newSong: newSong });
-        res.json({ message: 'Song updated successfully', reqq: req.body });
+        res.json({ message: 'Song updated successfully', req: req.body });
         // res.json({ message: 'Song updated successfully' });
     } catch (err) {
         console.error(err);
