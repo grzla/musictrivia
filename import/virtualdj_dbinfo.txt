@@ -1,0 +1,110 @@
+https://www.virtualdj.com/wiki/VDJ_database.html
+
+database.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<VirtualDJ_Database Version="8.1">
+
+ <Song FilePath="D:\Music\file1.mp3" FileSize="100000">
+  <Tags xxxx/>
+  <Infos xxxx />
+  <Scan xxxx/>
+  <Poi xxxx/>
+ <Poi xxxx/>
+ <Poi xxxx/>
+  <Comment>xxxx</Comment>
+  <CustomMix>xxxx</CustomMix>
+  <Link xxxx/>
+ </Song>
+
+ <Song FilePath="D:\Music\file2.mp3" FileSize="100000">
+ </Song>  
+ 
+</VirtualDJ_Database>
+
+
+
+
+
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <[o]> VirtualDJ_Database
+    [list]
+    Version
+    <[o]> Song
+    [list]
+    FilePath
+    FileSize
+    Flag
+    <[o]> Tags
+    [list]
+    Flag
+    Author
+    Title
+    Year
+    Genre
+    Bpm
+    Key
+    Album
+    Composer
+    Label
+    TrackNumber
+    Remix
+    Stars
+    Remixer
+    Grouping
+    User1
+    User2
+    Internal
+
+
+<[o]> Scan
+
+
+    Version
+    Flag
+    Volume
+    Bpm
+    AltBpm
+    Key
+
+
+<[o]> Infos
+
+
+    SongLength
+    Bitrate
+    Cover
+    Color
+    FirstSeen
+    FirstPlay
+    LastPlay
+    PlayCount
+    Corrupted
+    Faked [DEPRECATED]
+    BpmTag [DEPRECATED]
+    KeyTag [DEPRECATED]
+    Gain
+    UserColor
+
+
+<[o]> Poi
+
+
+    Pos
+    Type
+    Point
+    Name
+    Num
+    Bpm
+    Size
+    Color
+    Slot
+
+
+<[o]> Link
+<[o]> Comment
+[*] <[o]> CustomMix
+[/list]
+[/list]
+[/list]

@@ -1,0 +1,14 @@
+NOTES/TODO
+
+get_songs(year, num_songs) should be getSong(year)
+ - rewrite create_round so that calls to addSong get 1 song each
+
+rework list as <li> items
+
+write replace() button handler to replace target li with new song
+
+use fuzzysearch to confirm song in library
+ - if not, add song to request list and replace
+
+add finalize button (save list/mark all songs played/add songs to played list)
+

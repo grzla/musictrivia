@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .song-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .song-info, .song-buttons {
+            display: flex;
+            align-items: left;
+        }
+    </style>
+    <title>Music Trivia</title>
+    <script>
+        window.onload = function() {
+            console.log('Page loading')
+            fetch('/round')
+            .then(response => response.json())
+            .then(data => {
+                let output = document.getElementById('output');
+                data.forEach((song, index) => {
+                    let songElement = document.createElement('div');
+                    songElement.className = 'song-item';
+
+                    let songInfo = document.createElement('div');
+                    songInfo.className = 'song-info';
+                    let textElement = document.createElement('p');
+                    textElement.textContent = `${song.Artist} - ${song.Title}`;
+                    songInfo.appendChild(textElement);
+                    songElement.appendChild(songInfo);
+
+                    let songButtons = document.createElement('div');
+                    songButtons.className = 'song-buttons';
+                    
+                    // Create buttons here //
+                    
+                    let upButton = document.createElement('button');
+                    upButton.textContent = 'Up';
+                    upButton.onclick = function() {
+                        // Code to move the song down in the list
+                    };
+                    songButtons.appendChild(upButton);
+                               
+                    let downButton = document.createElement('button');
+                    downButton.textContent = 'Down';
+                    downButton.onclick = function() {
+                        // Code to move the song down in the list
+                    };
+                    songButtons.appendChild(downButton);
+
+                    let replaceButton = document.createElement('button');
+                    replaceButton.textContent = 'Replace';
+                    replaceButton.onclick = function() {
+                        console.log('replace clicked', song, JSON.stringify({ song: song }))
+                        fetch('/song', {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            // body: JSON.stringify({ song: song }) // replace `song.id` with the actual ID or unique identifier of the song
+                            // body: JSON.stringify({ song: song })
+                            body: JSON.stringify({year: song["Year"]}),
+                        })
+                        .then(response => response.json())
+                        .then(song => {
+                            console.log('Success:', song);
+                            data[index] = song// Code to add `data.newSong` to the list of songs
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    };
+                    songButtons.appendChild(replaceButton);
+    
+                    let neverplayButton = document.createElement('button');
+                    neverplayButton.textContent = 'Never play';
+                    neverplayButton.onclick = function() {
+                        console.log('never play clicked', song, JSON.stringify({ song: song }))
+                        fetch('/neverplay', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            // body: JSON.stringify({ song: song }) // replace `song.id` with the actual ID or unique identifier of the song
+                            // body: JSON.stringify({ song: song })
+                            body: JSON.stringify({id: song[""], year: song["Year"]}),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                            // Code to add `data.newSong` to the list of songs
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    };
+
+                    songButtons.appendChild(neverplayButton);
+                    
+                    songElement.appendChild(songButtons);
+                    output.appendChild(songElement);
+                });
+            })
+                .catch(error => console.error(error));
+        };
+    </script>
+</head>
+<body>
+    <h1>Music Trivia</h1>
+    <div id="output"></div>
+</body>
+</html>
