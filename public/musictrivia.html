@@ -27,26 +27,37 @@
                     let songInfo = document.createElement('div');
                     songInfo.className = 'song-info';
                     let textElement = document.createElement('p');
-                    textElement.textContent = `${song.Artist} - ${song.Title} (${song.Ranking})`;
+                    textElement.textContent = `${song.Artist} - ${song.Title} (${song.Ranking}) (${song["Year"]})`;
                     songInfo.appendChild(textElement);
                     songElement.appendChild(songInfo);
 
                     let songButtons = document.createElement('div');
                     songButtons.className = 'song-buttons';
                     
-                    // Create buttons here //
                     
                     let upButton = document.createElement('button');
                     upButton.textContent = 'Up';
                     upButton.onclick = function() {
-                        // Code to move the song down in the list
+                        // Get the previous sibling of the songElement
+                        let previousElement = songElement.previousElementSibling;
+
+                        // If there is a previous sibling, move the songElement before it
+                        if (previousElement) {
+                            songElement.parentNode.insertBefore(songElement, previousElement);
+                        }
                     };
                     songButtons.appendChild(upButton);
                                
                     let downButton = document.createElement('button');
                     downButton.textContent = 'Down';
                     downButton.onclick = function() {
-                        // Code to move the song down in the list
+                        // Get the next sibling of the songElement
+                        let nextElement = songElement.nextElementSibling;
+
+                        // If there is a next sibling, move it before the songElement to effectively move the songElement down
+                        if (nextElement) {
+                            songElement.parentNode.insertBefore(nextElement, songElement);
+                        }
                     };
                     songButtons.appendChild(downButton);
 
@@ -54,19 +65,17 @@
                     replaceButton.textContent = 'Replace';
                     replaceButton.onclick = function() {
                         console.log('replace clicked', song, JSON.stringify({ song: song }))
-                        fetch('/song', {
+                        fetch(`/song?year=${encodeURIComponent(song["Year"])}`, {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
-                            // body: JSON.stringify({ song: song }) // replace `song.id` with the actual ID or unique identifier of the song
-                            // body: JSON.stringify({ song: song })
-                            body: JSON.stringify({year: song["Year"]}),
                         })
                         .then(response => response.json())
-                        .then(song => {
-                            console.log('Success:', song);
-                            data[index] = song// Code to add `data.newSong` to the list of songs
+                        .then(newSong => {
+                            console.log('Success:', newSong);
+                            song = newSong; // Replace the old song with the new song in the data array
+                            textElement.textContent = `${song.Artist} - ${song.Title} (${song.Ranking}) (${song["Year"]})`;
                         })
                         .catch((error) => {
                             console.error('Error:', error);
@@ -83,20 +92,17 @@
                             headers: {
                                 'Content-Type': 'application/json',
                             },
-                            // body: JSON.stringify({ song: song }) // replace `song.id` with the actual ID or unique identifier of the song
-                            // body: JSON.stringify({ song: song })
                             body: JSON.stringify({id: song[""], year: song["Year"]}),
                         })
                         .then(response => response.json())
                         .then(data => {
-                            console.log('Success:', data);
-                            // Code to add `data.newSong` to the list of songs
+                            let song = data.newSong
+                            textElement.textContent = `${song.Artist} - ${song.Title} (${song.Ranking}) (${song["Year"]})`;
                         })
                         .catch((error) => {
                             console.error('Error:', error);
                         });
                     };
-
                     songButtons.appendChild(neverplayButton);
                     
                     songElement.appendChild(songButtons);

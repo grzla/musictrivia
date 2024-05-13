@@ -18,9 +18,11 @@ app.get('/round', async (req, res) => {
 
 app.get('/song', async (req, res) => {
     try {
-        console.log(`song route request body: ${req.body}`)
-        let year = req.body.year
-        let data = await get_songs(year, 1);
+        // console.log(`song route request body: ${req.body}`)
+        console.log(`song route request body: ${req.query}`)
+        // let year = req.body.year
+        let year = req.query.year
+        let data = await getSong(year);
         res.json(data);
     }
     catch (err) {
@@ -46,10 +48,11 @@ app.post('/neverplay', async (req, res) => {
         // Code to update the 'Play status' field in the TSV file to -1 for the song with the specified ID
 
         // Code to select a new song from the available songs
-        let newSong /* = code to select a new song */
+        let newSong = await getSong(year);
+        console.log(`neverplay newSong: ${newSong.Artist}`)
 
-        // res.json({ message: 'Song updated successfully', newSong: newSong });
-        res.json({ message: 'Song updated successfully', req: req.body });
+        // Send the new song in the response
+        res.json({ message: 'Song updated successfully', newSong: newSong });
         // res.json({ message: 'Song updated successfully' });
     } catch (err) {
         console.error(err);
