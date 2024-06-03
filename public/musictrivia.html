@@ -14,6 +14,8 @@
     </style>
     <title>Music Trivia</title>
     <script>
+        let songs = []
+
         window.onload = function() {
             console.log('Page loading')
             fetch('/round')
@@ -21,8 +23,14 @@
             .then(data => {
                 let output = document.getElementById('output');
                 data.forEach((song, index) => {
+                    
+                    songs.push(song)
+
                     let songElement = document.createElement('div');
                     songElement.className = 'song-item';
+                    
+                    // store the song data in the songElement
+                    songElement.dataset.song = JSON.stringify(song)
 
                     let songInfo = document.createElement('div');
                     songInfo.className = 'song-info';

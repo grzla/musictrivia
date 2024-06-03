@@ -37,12 +37,15 @@ directory = 'import/pptx/'
 current_directory = os.getcwd()
 
 # Open the output file
-with open(os.path.join(current_directory, 'usedSongs.tsv'), 'w', newline='') as output_file:
+with open(os.path.join(current_directory, 'usedSongs.tsv'), 'a', newline='') as output_file:
     tsv_writer = csv.writer(output_file, delimiter='\t')
-    # Write the header row
-    tsv_writer.writerow(['Artist', 'Title', 'Release Year'])
+    # Write the header row only if the file is empty - cur 172 as of game 18
+    if output_file.tell() == 0:
+        tsv_writer.writerow(['Artist', 'Title', 'Release Year'])
+
     # Get a list of all .pptx files in the directory and sort them    
     pptx_files = sorted([f for f in os.listdir(directory) if f.endswith('.pptx')])
+
     # Extract text from each .pptx file
     for pptx_file in pptx_files:
         extract_text(os.path.join(directory, pptx_file), tsv_writer)

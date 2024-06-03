@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VirtualDJ_Database Version="8.2">
+ <Song FilePath="C:\iTunes\(A New Adds)\2021\10\Niall Horan" Flag="1">
+  <Tags Flag="2" />
+  <Infos LastModified="1633542480" FirstSeen="1633542480" />
+ </Song>
+ <Song FilePath="C:\iTunes\Unknown Artist\Unknown Album\BPM 808 Kick V1.WAV" FileSize="170164">
+  <Tags Flag="1" />
+  <Infos SongLength="0.961383" LastModified="1709488702" FirstSeen="1570206824" Bitrate="1411" />
+  <Scan Version="801" Key="G" />
+  <Poi Type="automix" Point="realStart" />
+  <Poi Pos="0.788027" Type="automix" Point="realEnd" />
+ </Song>         
+ <Song FilePath="C:\iTunes\Unknown Artist\Unknown Album\808 Maracas Dirty 3k.WAV" FileSize="26106">
+  <Tags Flag="1" />
+  <Infos SongLength="0.144739" LastModified="1709488703" FirstSeen="1570206824" Bitrate="1411" />
+  <Scan Version="801" Key="Am" />
+  <Poi Type="automix" Point="realStart" />
+  <Poi Pos="0.034830" Type="automix" Point="realEnd" />
+ </Song>                                                                                                
+ <Song FilePath="C:\iTunes\Lady Gaga\Unknown Album\You &amp; I (RI Version).mp3" FileSize="5817006">
+  <Tags Author="Lady Gaga" Title="You &amp; I (RI Version)" Flag="1" />
+  <Infos SongLength="242.285714" LastModified="1709490643" FirstSeen="1521829170" Bitrate="192" Cover="2" />
+  <Scan Version="801" Bpm="0.463163" AltBpm="0.694739" Volume="0.452511" Key="A" Flag="32768" />
+  <Poi Pos="4.529410" Type="beatgrid" />
+  <Poi Pos="0.368617" Type="automix" Point="realStart" />
+  <Poi Pos="239.307755" Type="automix" Point="realEnd" />
+  <Poi Pos="4.050" Type="automix" Point="fadeStart" />
+  <Poi Pos="236.150" Type="automix" Point="fadeEnd" />
+ </Song>                                                                         
+ 
+</VirtualDJ_Database>

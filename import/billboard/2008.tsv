@@ -19,7 +19,7 @@
 17	18	Natasha Bedingfield	Pocketful of Sunshine	0
 18	19	Chris Brown featuring T-Pain	Kiss Kiss	0
 19	20	Ne-Yo	Closer	0
-20	21	Colbie Caillat	Bubbly	0
+20	21	Colbie Caillat	Bubbly	-1
 21	22	Mariah Carey	Touch My Body	0
 22	23	Madonna featuring Justin Timberlake and Timbaland	4 Minutes	0
 23	24	Pink	So What	0
@@ -58,7 +58,7 @@
 56	57	Ne-Yo	Miss Independent	0
 57	58	Secondhand Serenade	Fall for You	0
 58	59	Flo Rida featuring will.i.am	In the Ayer	0
-59	60	John Mayer	Say	0
+59	60	John Mayer	Say	-1
 60	61	Jordin Sparks	One Step at a Time	0
 61	62	Rihanna featuring Ne-Yo	Hate That I Love You	0
 62	63	Lupe Fiasco featuring Matthew Santos	Superstar	0
@@ -95,7 +95,7 @@
 93	94	Gavin Rossdale	Love Remains the Same	0
 94	95	Daughtry	Feels Like Tonight	0
 95	96	Timbaland featuring Keri Hilson	The Way I Are	0
-96	97	Saving Abel	Addicted	0
+96	97	Saving Abel	Addicted	-1
 97	98	Santana featuring Chad Kroeger	Into the Night	0
 98	99	Keyshia Cole	Heaven Sent	0
 99	100	2 Pistols featuring T-Pain and Tay Dizm	She Got It	0

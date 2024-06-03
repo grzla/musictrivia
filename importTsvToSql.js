@@ -45,8 +45,8 @@ USE musictriviatest;
 
 CREATE TABLE librarysongs (
   id INT AUTO_INCREMENT,
-  Artist VARCHAR(50),
-  Title VARCHAR(50),
+  Artist VARCHAR(100),
+  Title VARCHAR(100),
   ReleaseYear SMALLINT,
   PRIMARY KEY (id)
 );
@@ -54,8 +54,8 @@ CREATE TABLE librarysongs (
 ---> LOAD LIBRARYSONGS.TSV INTO TABLE
 
 -- Create normalized versions of your columns
-ALTER TABLE librarysongs ADD COLUMN Title_normalized VARCHAR(50);
-ALTER TABLE librarysongs ADD COLUMN Artist_normalized VARCHAR(50);
+ALTER TABLE librarysongs ADD COLUMN Title_normalized VARCHAR(100);
+ALTER TABLE librarysongs ADD COLUMN Artist_normalized VARCHAR(100);
 
 UPDATE librarysongs 
 SET Artist_normalized = LOWER(REPLACE(REPLACE(artist, '.', ''), ',', '')),
@@ -67,8 +67,8 @@ ALTER TABLE librarysongs ADD FULLTEXT(Artist_normalized, Title_normalized);
 CREATE TABLE billboard (
   id INT AUTO_INCREMENT,
   Ranking SMALLINT,
-  Artist VARCHAR(50),
-  Title VARCHAR(50),
+  Artist VARCHAR(100),
+  Title VARCHAR(100),
   Year SMALLINT,
   ReleaseYear SMALLINT,
   Played TINYINT,
