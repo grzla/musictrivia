@@ -74,4 +74,17 @@ CREATE TABLE billboard (
   Played TINYINT,
   PRIMARY KEY (id)
 );
+
+// set up a trigger to automatically normalize the artist and title columns
+DELIMITER //
+CREATE TRIGGER BeforeInsertLibrarySongs
+// BEFORE UPDATE ON librarysongs
+BEFORE INSERT ON librarysongs
+FOR EACH ROW
+BEGIN
+  SET NEW.Artist_normalized = LOWER(REPLACE(REPLACE(NEW.Artist, '.', ''), ',', ''));
+  SET NEW.Title_normalized = LOWER(REPLACE(REPLACE(NEW.Title, '.', ''), ',', ''));
+END; //
+DELIMITER ;
+
 */
