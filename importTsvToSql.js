@@ -51,6 +51,24 @@ CREATE TABLE librarysongs (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE librarysongs (
+    id VARCHAR(255) PRIMARY KEY,
+    artist VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    year INT,
+    rank INT,
+    genre VARCHAR(20),
+    releaseYear INT,
+    bpm VARCHAR(20)
+    played DATE,
+    isInLibrary BOOLEAN DEFAULT FALSE,
+    neverPlay BOOLEAN DEFAULT FALSE,
+    FULLTEXT(artist, title)
+) ENGINE=InnoDB;
+ 
+SELECT * FROM Songs
+WHERE MATCH(artist, title) AGAINST('+Nirvana' IN BOOLEAN MODE);
+
 ---> LOAD LIBRARYSONGS.TSV INTO TABLE
 
 -- Create normalized versions of your columns

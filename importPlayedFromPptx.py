@@ -1,4 +1,5 @@
 import os
+import shutil  # Import shutil for moving files
 from pptx import Presentation
 import re
 import csv
@@ -29,12 +30,15 @@ def extract_text(pptx_file, csv_writer):
                             release_year = ''
                         # Write the data to the CSV file
                         csv_writer.writerow([artist, title, release_year])
+                        # Print the extracted data to console
+                        print(f"Artist: {artist}, Title: {title}, Release Year: {release_year}")
                         
 # Directory containing the .pptx files
 directory = 'import/pptx/'
-
 # Get the current working directory
 current_directory = os.getcwd()
+# Define the imported directory path
+imported_directory = os.path.join(current_directory, 'import/pptx/imported')  
 
 # Open the output file
 with open(os.path.join(current_directory, 'usedSongs.tsv'), 'a', newline='') as output_file:
@@ -49,3 +53,5 @@ with open(os.path.join(current_directory, 'usedSongs.tsv'), 'a', newline='') as 
     # Extract text from each .pptx file
     for pptx_file in pptx_files:
         extract_text(os.path.join(directory, pptx_file), tsv_writer)
+        # Move the processed .pptx file to the /imported directory
+        shutil.move(os.path.join(directory, pptx_file), os.path.join(imported_directory, pptx_file))
